@@ -1,83 +1,123 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tetris - Registrazione account</title>
-    <style>
-      body {
-        background-color: #f0e8d8;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 16px;
-        margin: 0;
-        padding: 0;
-      }
-
-      #form-container {
-        background-color: #f0e8d8;
-        border: 1px solid #a3a3a3;
-        box-shadow: 2px 2px 2px #a3a3a3;
-        margin: 50px auto;
-        max-width: 400px;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #a3a3a3;
-        font-size: 28px;
-        margin: 0 0 20px;
-        text-align: center;
-      }
-
-      label {
-        color: #a3a3a3;
-        display: block;
-        font-size: 20px;
-        margin: 20px 0 10px;
-      }
-
-      input[type="text"],
-      input[type="password"] {
-        border: none;
-        border-bottom: 2px solid #a3a3a3;
-        font-size: 16px;
-        margin-bottom: 20px;
-        padding: 5px;
-        width: 100%;
-      }
-
-      input[type="submit"] {
-        background-color: #a3a3a3;
-        border: none;
-        color: #f0e8d8;
-        cursor: pointer;
-        font-size: 20px;
-        padding: 10px;
-        text-transform: uppercase;
-        width: 100%;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #f0e8d8;
-        color: #a3a3a3;
-        transition: all 0.3s ease;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="form-container">
-      <h1>Registrazione account</h1>
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
-
-        <label for="confirm-password">Conferma password:</label>
-        <input type="password" id="confirm-password" name="confirm-password" />
-
-        <input type="submit" value="Registrati" />
-      </form>
+<html lang="it">
+<head>
+    <link rel="icon" href="/tetris/img/icone/icona.png" type="image/x-icon">
+    <meta name="description" content="Tetris">
+    <link rel="stylesheet" href="./tetris.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class = "main">
+        <div class="logo"><img src="/tetris/img/sfondi/logo.png" alt="logo" width = "400"></div>
+        <form action="index.php" method="POST">
+            <div class = "credenziali">
+                <div class = "username">
+                    <img src="/tetris/img/icone/usr2.png" alt="usrr" class = "usr">
+                    <input type="text" name = "username" placeholder = "Username">
+                </div>
+                <div class = "password">
+                    <img src="/tetris/img/icone/psw.png" alt="psww" class = "usr">
+                    <input type="password" name = "psw" placeholder = "Password">
+                </div>
+            </div>
+            <button class = "submit" name = "login">Login</button>
+        </form>
+        <div class = "link">Non hai un account ? <a href="./php/signup.php" name = "signup">Sign up</a></div>
+        </div>
     </div>
-  </body>
+        
+</body>
 </html>
+
+<?php
+
+// Nel caso di signup
+function signup() {   
+    header("location: ./php/signup.php");
+}
+
+function login($username, $password) {
+
+    // Includiamo il codice per la connessione al database
+    require_once "./php/connessione.php";
+    
+    $sql = "SELECT Psw FROM User WHERE Username = ?";
+    
+    if ($statement = mysqli_prepare($connessione, $sql)) {
+
+        // Inseriamo l'username (tipo stringa) nello statement
+        mysqli_stmt_bind_param($statement, 's', $username);
+
+        // Eseguiamo lo statement
+        mysqli_stmt_execute($statement);
+        
+        // Attacchiamo i risultati
+        mysqli_stmt_bind_result($statement, $pswHashata);
+
+        while (mysqli_stmt_fetch($statement)){
+            if (password_verify($password, $pswHashata)){
+                $_SESSION["username"] = $username;
+                header("location: ./php/home.php");
+                return;
+            }
+        }
+
+        echo (
+            "
+            <script>
+                let usr = document.querySelector('.username');
+                let psw = document.querySelector('.password');
+                usr.style.borderBottom = 'solid 2px red';
+                psw.style.borderBottom = 'solid 2px red';
+                alert('Login errato');  
+            </script>
+            "
+        );
+    }
+}
+
+if ($_POST) {
+    
+    $username = $_POST["username"];
+    $password = $_POST["psw"];
+
+    if (empty($username)) {
+        echo ("
+            <script>
+                alert('ATTENZIONE ! Lo username non può essere vuoto'); 
+                let usr = document.querySelector('.username');
+                usr.style.borderBottom = 'solid 2px red';
+                window.history.back();
+            </script>"
+        );
+        exit();
+    }
+
+    // Una password costituita dal solo carattere 0 non è considerata valida
+    if (empty($password)) {
+        echo (
+            "
+            <script>
+                alert('ATTENZIONE ! La password non può essere vuota'); 
+                let psw = document.querySelector('.password');
+                psw.style.borderBottom = 'solid 2px red';
+                window.history.back();
+            </script>
+        ");
+        exit();
+    }
+
+    login($username, $password);
+
+}
+
+?>
+
+<script>
+    
+</script>
+
+

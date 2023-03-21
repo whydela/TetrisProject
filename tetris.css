@@ -1,0 +1,124 @@
+body{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(./img/sfondi/9.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    /* zoom: 0.67; */
+}
+
+.usr{
+    width: 25px;
+    margin-bottom: -4px; 
+}
+
+
+/* LOGIN */
+.main{
+    width: 400px;
+    height: 600px;
+    padding: 10px 25px 35px 35px;
+    border-radius: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.credenziali{
+    width: 100%;
+    padding: 2px 5px 0px 5px;
+}
+
+.credenziali input{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    padding: 20px 10px 20px 5px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.username{
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+}
+
+.username:hover{
+    border-bottom: 3px solid white;
+}
+
+.password{
+    margin-bottom: 9px;
+    border-bottom: 2px solid white;
+}
+
+.password:hover{
+    border-bottom: 3px solid white;
+}
+
+.submit{
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 52px;
+    border-radius: 30px;
+    color:blue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, red 0%, rgb(255, 106, 0) 30%, yellow 90%);
+    background-size: 150%;
+    box-shadow: 1px 1px 1px red, -1px -1px 4px red; 
+}
+
+.submit:hover{
+    cursor: pointer;
+    background-position: right;
+}
+
+.link{
+    margin: 10px;
+    font-size: large;
+    text-align: center;
+}
+
+.link a{
+    color: red; 
+    text-decoration: none;
+}
+
+/* HOME */
+
+.menu{
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    /* border-radius: 30px; */
+    color:blue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, red 0%, rgb(255, 106, 0) 30%, yellow 90%);
+    background-size: 150%;
+    box-shadow: 1px 1px 1px red, -1px -1px 4px red; 
+}
+
+.menu:hover{
+    cursor: pointer;
+    background-position: right;
+}
+
+canvas{
+    margin-left: 10px;
+    margin-right: 10px;
+}
