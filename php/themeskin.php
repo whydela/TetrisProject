@@ -172,7 +172,7 @@
                     }
                     if($maxtheme >= 6){
                         if($theme == 6){
-                            echo("<img src='../img/sfondi/6.jpg' style = 'animation: blink 3s infinite' alt='six' width=150>");
+                            echo("<img src='../img/sfondi/6.jpg' style = 'animation: blink 3s infinite' alt='six' width=150 height=85.2>");
                         } else{
                             echo("<img src='../img/sfondi/6.jpg' alt='six' width=150 height=85.2>");
                         }
