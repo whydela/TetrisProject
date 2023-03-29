@@ -6,9 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris_Sign up</title>
+    <title>Sign up</title>
+    <style>
+        #back{
+            position: absolute;
+            top: -1%;
+            left: 2%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <a href="../index.php">
+        <img src="../img/icone/back.png" alt="back" id = "back" width = "100">
+    </a>
     <div class = "main">
         <div class="logo"><img src="/tetris/img/sfondi/logo.png" alt="logo" width = "400"></div>
         <form action="signup.php" method="POST">
@@ -67,7 +78,7 @@ if ($_POST) {
     if($password != $confirm){
         echo ("
             <script>
-                alert('ATTENZIONE ! Le due password NON coincidono !'); 
+                alert('ATTENZIONE ! Le due password non coincidono !'); 
                 window.history.back();
             </script>"
         );
@@ -83,9 +94,10 @@ function signup($username, $password)
 
     require_once "./connessione.php";
     $pswHashata = password_hash($password, PASSWORD_BCRYPT);
-    $sql = "INSERT INTO User VALUES (?, ?)";
+    $sql = "INSERT INTO User VALUES (?, ?, 0, 1, 1, 0, 1)";
     $statement = mysqli_prepare($connessione, $sql);
     mysqli_stmt_bind_param($statement, 'ss', $username, $pswHashata);
+
     if (!mysqli_stmt_execute($statement)) {
         echo ("
         <script>
@@ -96,8 +108,12 @@ function signup($username, $password)
         exit();
     }
     $_SESSION["username"] = $username;
+    $sql = "INSERT INTO skinwallet VALUES("."'" . $username . "'".", 1)";
+    mysqli_query($connessione, $sql);
+    $sql = "INSERT INTO themewallet VALUES("."'" . $username . "'".", 1)";
+    mysqli_query($connessione, $sql);
     header("location: home.php");
     exit();
-
+    
 }
 ?>

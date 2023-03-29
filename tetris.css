@@ -4,11 +4,10 @@ body{
     align-items: center;
     justify-content: center;
     background-image: url(./img/sfondi/9.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: 1100px;
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
     color: white;
-    /* zoom: 0.67; */
 }
 
 .usr{
@@ -68,9 +67,8 @@ body{
     height: 52px;
     border-radius: 30px;
     color:blue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-    font-weight: 800;
+    font-family: Rockwell Nova;
+    font-size: 33px;
     text-align: center;
     margin-top: 20px;
     background-image: linear-gradient(to right, red 0%, rgb(255, 106, 0) 30%, yellow 90%);
@@ -94,6 +92,8 @@ body{
     text-decoration: none;
 }
 
+
+
 /* HOME */
 
 .menu{
@@ -101,9 +101,8 @@ body{
     border: none;
     width: 100%;
     height: 40px;
-    /* border-radius: 30px; */
     color:blue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Goudy Old Style;
     font-size: 25px;
     font-weight: 800;
     text-align: center;
@@ -118,7 +117,161 @@ body{
     background-position: right;
 }
 
+.logout{
+    position: absolute;
+    top: 5%;
+    right: 8%;
+}
+
+.logout:nth-of-type(2){
+    top: 25%;
+    right: 5.5%;
+}
+
 canvas{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.Skin{
+    position: absolute;
+    left: 2%;
+    top: 3%;
+}
+
+.nome{
+    font-family: segoe script;
+    font-size: 50px;
+    position: absolute;
+    left: 8%;
+    top: -6.8%;
+
+}
+#back{
+    position: absolute;
+    top: 14%;
+    left: 2%;
+    cursor: pointer;
+}
+
+/* CLASSIFICA */
+
+.tabella{
+    overflow: auto;
+    height: 280px;
+    width: fit-content;
+}
+
+table{
+    border-collapse: collapse;
+    width: 400px;
+    border: double 3px gold;
+    margin-top: 20px;
+}
+
+tr>td{
+    border: double 3px gold;
+    font-family: goudy old style;
+    font-size: 25px;
+    padding-inline: 10px;
+    text-align: center;
+}
+
+tr>th{
+    border: double 3px gold;
+    font-family: goudy old style;
+    font-weight: 900;
+    color:orangered;
+    font-size: 28px;
+    padding-inline: 10px;
+    text-align: center;
+}
+
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+tr:nth-of-type(2)>td:last-of-type{
+    color:aqua;
+    animation: blink 1.75s infinite;
+}
+
+tr:nth-of-type(2)>td:first-of-type{
+    color:lime;
+    font-weight: bolder;
+}
+
+td:first-of-type{
+    color:greenyellow;
+    
+}
+
+td:last-of-type{
+    color: blue;
+}
+
+/* SHOP */
+
+.logos{
+    display: flex;
+    left: 34.6%;
+    margin-top: 18px;
+    position: relative;
+}
+
+.themeskin{
+    width: 50%;
+    height: 250px;
+    text-align: center;
+    font-size: 40px;
+    font-family: MV Boli;
+    color: orange;
+}
+
+.themeskin p{
+    margin-top: -5px;
+}
+
+.skins{
+    margin-top: -40px;
+    margin-left: 55px;
+    text-align: left;
+}
+
+.skins img{
+    cursor: pointer;
+    margin-right: 18px;
+}
+
+.skins img:first-of-type{
+    cursor: pointer;
+    /* margin-right: 0px; */
+}
+
+.skins img[alt=blocked]{
+    cursor: not-allowed;
+    margin-right: 18px;
+}
+
+.temis{
+    margin-top: -35px;
+    margin-left: 80px;
+    text-align: left;
+}
+
+.temis img{
+    cursor: pointer;
+    margin-right: 18px;
+}
+
+.temis img:first-of-type{
+    cursor: pointer;
+    /* margin-right: 0px; */
+}
+
+.temis img[alt=blocked]{
+    cursor: not-allowed;
+    margin-right: 18px;
 }

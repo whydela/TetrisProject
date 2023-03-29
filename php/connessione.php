@@ -1,6 +1,6 @@
-<!-- Piccolo codice per la connessione al database -->
-
 <?php
+
+    // Piccolo codice per la connessione al database
 
     $host = "localhost";
     $usr = "root";
