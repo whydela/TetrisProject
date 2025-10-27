@@ -1,4 +1,4 @@
-# pWeb Project: Tetris Arcade Game
+# Tetris Arcade Game
 
 ## 🕹️ Overview
 
@@ -120,3 +120,4 @@ This project contains the following key files:
     * Start your web server (e.g., start Apache and MySQL in XAMPP).
     * Open your web browser and navigate to the project's root directory (e.g., `http://localhost/tetris/` or `http://localhost/your-folder-name/`).
     * [cite_start]You can register a new account on the `signup.php` page or log in[cite: 1, 13].
+
